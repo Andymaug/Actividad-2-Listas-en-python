@@ -1,0 +1,49 @@
+1. Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
+
+// Recorrer PTR2
+for (Node nodo = PTR2; nodo != null; nodo = nodo.siguiente) {
+    int valor_actual = nodo.valor;
+    Node anterior = null;
+    Node actual = PTR1;
+
+    // Buscar el valor actual en PTR1
+    while (actual != null) {
+        if (actual.valor == valor_actual) {
+            if (anterior == null) {
+                PTR1 = actual.siguiente;
+            } else {
+                anterior.siguiente = actual.siguiente;
+            }
+            // Liberar el nodo eliminado
+            actual = null;
+            break;
+        }
+        anterior = actual;
+        actual = actual.siguiente;
+    }
+}
+
+
+2. Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
+
+// Crear conjunto vacío
+Set<Integer> conjunto = new HashSet<>();
+
+// Recorrer la lista enlazada
+Node nodo = lista;
+int contador = 0;
+while (nodo != null) {
+    // Si el valor no está en el conjunto, agregarlo y aumentar el contador
+    if (!conjunto.contains(nodo.valor)) {
+        conjunto.add(nodo.valor);
+        contador++;
+    }
+    // Moverse al siguiente nodo
+    nodo = nodo.siguiente;
+}
+
+// Escribir el número total de elementos únicos
+System.out.println("Número total de elementos diferentes: " + contador);
+
+// Escribir los elementos únicos en el conjunto
+System.out.println("Elementos diferentes en la lista: " + conjunto);
