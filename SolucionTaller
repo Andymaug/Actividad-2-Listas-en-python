@@ -1,4 +1,4 @@
-1. Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
+Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -35,8 +35,7 @@ def eliminar_elementos_en_comun(ptr1, ptr2):
 
 
 
-
-2. Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
+ Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -77,8 +76,7 @@ print(f"Hay {cantidad} elementos diferentes en la lista.")
 
 
 
-
-3. Hacer un algoritmo que dada una lista simple enlazada ya creada, invierta su sentido. (no puede cambiar la información, solo los enlaces).
+Hacer un algoritmo que dada una lista simple enlazada ya creada, invierta su sentido. (no puede cambiar la información, solo los enlaces).
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -127,8 +125,7 @@ while actual:
 
 
 
-
-4. Hacer un algoritmo que realice las siguientes operaciones a medida que recorre una lista:
+Hacer un algoritmo que realice las siguientes operaciones a medida que recorre una lista:
 
 a. Si la información del nodo es negativa insertar un nuevo nodo antes de este con información igual a -1000
 
@@ -216,7 +213,7 @@ while actual:
 
     
     
- 5. Hacer un algoritmo que recorra una lista y regrese dos listas L1 y L2. L1 debe contener los elementos de la lista inicial (sin repetir) y L2 debe contener las veces que se repite ese número.
+ Hacer un algoritmo que recorra una lista y regrese dos listas L1 y L2. L1 debe contener los elementos de la lista inicial (sin repetir) y L2 debe contener las veces que se repite ese número.
     
     
     def contar_elementos(lista):
