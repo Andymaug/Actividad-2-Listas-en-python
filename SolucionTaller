@@ -1,49 +1,117 @@
 1. Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
 
-// Recorrer PTR2
-for (Node nodo = PTR2; nodo != null; nodo = nodo.siguiente) {
-    int valor_actual = nodo.valor;
-    Node anterior = null;
-    Node actual = PTR1;
+def eliminar_elementos_comunes(PTR1, PTR2):
+    nodo1 = PTR1
+    while nodo1 is not None:
+        nodo2 = PTR2
+        while nodo2 is not None:
+            if nodo1.informacion == nodo2.informacion:
+                if nodo1 == PTR1:
+                    PTR1 = nodo1.siguiente
+                else:
+                    nodo1.anterior.siguiente = nodo1.siguiente
+                if nodo1.siguiente is not None:
+                    nodo1.siguiente.anterior = nodo1.anterior
+            nodo2 = nodo2.siguiente
+        nodo1 = nodo1.siguiente
+    return PTR1
 
-    // Buscar el valor actual en PTR1
-    while (actual != null) {
-        if (actual.valor == valor_actual) {
-            if (anterior == null) {
-                PTR1 = actual.siguiente;
-            } else {
-                anterior.siguiente = actual.siguiente;
-            }
-            // Liberar el nodo eliminado
-            actual = null;
-            break;
-        }
-        anterior = actual;
-        actual = actual.siguiente;
-    }
-}
 
 
 2. Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
 
-// Crear conjunto vacío
-Set<Integer> conjunto = new HashSet<>();
+def contar_elementos_diferentes(lista):
+    elementos = set()
+    nodo = lista
+    while nodo is not None:
+        elementos.add(nodo.informacion)
+        nodo = nodo.siguiente
+    print("Los elementos diferentes son:", len(elementos))
+    print("Los elementos diferentes son:", elementos)
 
-// Recorrer la lista enlazada
-Node nodo = lista;
-int contador = 0;
-while (nodo != null) {
-    // Si el valor no está en el conjunto, agregarlo y aumentar el contador
-    if (!conjunto.contains(nodo.valor)) {
-        conjunto.add(nodo.valor);
-        contador++;
-    }
-    // Moverse al siguiente nodo
-    nodo = nodo.siguiente;
-}
 
-// Escribir el número total de elementos únicos
-System.out.println("Número total de elementos diferentes: " + contador);
 
-// Escribir los elementos únicos en el conjunto
-System.out.println("Elementos diferentes en la lista: " + conjunto);
+
+3. Hacer un algoritmo que dada una lista simple enlazada ya creada, invierta su sentido. (no puede cambiar la información, solo los enlaces).
+
+class Nodo:
+    def __init__(self, valor):
+        self.valor = valor
+        self.siguiente = None
+
+def invertir_lista(lista):
+    pila = []
+    actual = lista
+    while actual:
+        pila.append(actual)
+        actual = actual.siguiente
+    
+    nueva_lista = None
+    if len(pila) > 0:
+        nueva_lista = pila.pop()
+        actual = nueva_lista
+        while len(pila) > 0:
+            actual.siguiente = pila.pop()
+            actual = actual.siguiente
+        actual.siguiente = None
+    
+    return nueva_lista
+
+
+
+4. Hacer un algoritmo que realice las siguientes operaciones a medida que recorre una lista:
+
+a. Si la información del nodo es negativa insertar un nuevo nodo antes de este con información igual a -1000
+
+b. Si la información del nodo es positiva insertar un nuevo nodo después de este con información igual a 1000
+
+c. Si la información del nodo es cero eliminarlo.
+
+No se permite recorrer la lista más de una vez.
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def modify_list(head):
+    # Variable to keep track of previous node
+    prev = None
+    # Variable to keep track of current node
+    current = head
+    while current is not None:
+        # Check if the node's data is negative
+        if current.data < 0:
+            # Create a new node with data = -1000
+            new_node = Node(-1000)
+            # Set the new node's next pointer to the current node
+            new_node.next = current
+            # Set the previous node's next pointer to the new node
+            if prev is not None:
+                prev.next = new_node
+            else:
+                # If the current node is the head node, update the head node to the new node
+                head = new_node
+            # Update the current node to the new node
+            current = new_node
+        # Check if the node's data is positive
+        elif current.data > 0:
+            # Create a new node with data = 1000
+            new_node = Node(1000)
+            # Set the new node's next pointer to the current node's next node
+            new_node.next = current.next
+            # Set the current node's next pointer to the new node
+            current.next = new_node
+            # Update the current node to the next node
+            current = new_node.next
+        else:
+            # If the node's data is 0, delete the node
+            if prev is not None:
+                # Update the previous node's next pointer to the current node's next node
+                prev.next = current.next
+            else:
+                # If the current node is the head node, update the head node to the next node
+                head = current.next
+            # Update the current node to the next node
+            current = current.next
+    return head
