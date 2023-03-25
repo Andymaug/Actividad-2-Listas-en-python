@@ -1,4 +1,4 @@
-Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
+1. Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -35,7 +35,7 @@ def eliminar_elementos_en_comun(ptr1, ptr2):
 
 
 
- Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
+2. Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -76,7 +76,7 @@ print(f"Hay {cantidad} elementos diferentes en la lista.")
 
 
 
-Hacer un algoritmo que dada una lista simple enlazada ya creada, invierta su sentido. (no puede cambiar la información, solo los enlaces).
+3. Hacer un algoritmo que dada una lista simple enlazada ya creada, invierta su sentido. (no puede cambiar la información, solo los enlaces).
 
 class Nodo:
     def __init__(self, valor, siguiente=None):
@@ -125,7 +125,7 @@ while actual:
 
 
 
-Hacer un algoritmo que realice las siguientes operaciones a medida que recorre una lista:
+4. Hacer un algoritmo que realice las siguientes operaciones a medida que recorre una lista:
 
 a. Si la información del nodo es negativa insertar un nuevo nodo antes de este con información igual a -1000
 
@@ -213,7 +213,7 @@ while actual:
 
     
     
- Hacer un algoritmo que recorra una lista y regrese dos listas L1 y L2. L1 debe contener los elementos de la lista inicial (sin repetir) y L2 debe contener las veces que se repite ese número.
+ 5. Hacer un algoritmo que recorra una lista y regrese dos listas L1 y L2. L1 debe contener los elementos de la lista inicial (sin repetir) y L2 debe contener las veces que se repite ese número.
     
     
     def contar_elementos(lista):
@@ -240,7 +240,7 @@ while actual:
  
  
  
- Dada una lista enlazada simple ya creada, hacer un algoritmo que vaya formando dos listas (PTR1 y PTR2) con los mismos nodos de la lista inicial de tal forma que en la lista PTR1 vayan quedando todos los elementos positivos, y en la lista PTR2 todos los elementos negativos. Si hay nodos que tengan como información el 0 se eliminan.
+6. Dada una lista enlazada simple ya creada, hacer un algoritmo que vaya formando dos listas (PTR1 y PTR2) con los mismos nodos de la lista inicial de tal forma que en la lista PTR1 vayan quedando todos los elementos positivos, y en la lista PTR2 todos los elementos negativos. Si hay nodos que tengan como información el 0 se eliminan.
  
  
  class Nodo:
@@ -309,7 +309,7 @@ while actual:
     
     
     
- Dadas dos listas enlazadas simples ya creadas (PTR1 y PTR2) ordenadas ascendentemente, hacer un algoritmo que cree una tercera lista PTR3 ordenada descendentemente con los elementos comunes de las dos listas.
+7. Dadas dos listas enlazadas simples ya creadas (PTR1 y PTR2) ordenadas ascendentemente, hacer un algoritmo que cree una tercera lista PTR3 ordenada descendentemente con los elementos comunes de las dos listas.
  
  
    class Nodo:
@@ -372,7 +372,7 @@ while ptr3 is not None:
     
     
     
-Eliminar el K-ésimo nodo de una lista simple enlazada.
+8. Eliminar el K-ésimo nodo de una lista simple enlazada.
 
 
 class Node:
@@ -405,7 +405,7 @@ def delete_kth_node(head, k):
     
     
 
-Escribir un algoritmo que verifique si dos listas simples son semejantes. Dos listas enlazadas son semejantes si tienen los mismos elementos, no importa el orden. Si un elemento se repite en una lista en la otra debe repetirse igual número de veces
+9. Escribir un algoritmo que verifique si dos listas simples son semejantes. Dos listas enlazadas son semejantes si tienen los mismos elementos, no importa el orden. Si un elemento se repite en una lista en la otra debe repetirse igual número de veces
 
 
 class Node:
