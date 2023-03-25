@@ -20,14 +20,25 @@ def eliminar_elementos_comunes(PTR1, PTR2):
 
 2. Hacer un algoritmo que escriba el número total de elementos diferentes en una lista enlazada ya creada. ¿Cuáles son?
 
-def contar_elementos_diferentes(lista):
-    elementos = set()
-    nodo = lista
-    while nodo is not None:
-        elementos.add(nodo.informacion)
-        nodo = nodo.siguiente
-    print("Los elementos diferentes son:", len(elementos))
-    print("Los elementos diferentes son:", elementos)
+class Nodo:
+    def __init__(self, valor, siguiente=None):
+        self.valor = valor
+        self.siguiente = siguiente
+
+# Creamos una lista enlazada de ejemplo
+nodo4 = Nodo(2)
+nodo3 = Nodo(3, nodo4)
+nodo2 = Nodo(1, nodo3)
+nodo1 = Nodo(2, nodo2)
+nodo0 = Nodo(1, nodo1)
+lista = nodo0
+
+# Contamos los elementos diferentes en la lista
+cantidad = contar_elementos_diferentes(lista)
+
+# Imprimimos la cantidad de elementos diferentes
+print(f"Hay {cantidad} elementos diferentes en la lista.")
+
 
 
 
