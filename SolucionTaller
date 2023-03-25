@@ -237,3 +237,171 @@ while actual:
 
  print("L1:", L1)
  print("L2:", L2)
+ 
+ 
+ 
+ Dada una lista enlazada simple ya creada, hacer un algoritmo que vaya formando dos listas (PTR1 y PTR2) con los mismos nodos de la lista inicial de tal forma que en la lista PTR1 vayan quedando todos los elementos positivos, y en la lista PTR2 todos los elementos negativos. Si hay nodos que tengan como información el 0 se eliminan.
+ 
+ 
+ class Nodo:
+    def __init__(self, valor, siguiente=None):
+        self.valor = valor
+        self.siguiente = siguiente
+
+def formar_listas(ptr):
+    ptr1 = None
+    ptr2 = None
+    actual = ptr
+
+    while actual:
+        if actual.valor == 0:
+            # Eliminar nodo con valor igual a 0
+            siguiente = actual.siguiente
+            del actual
+            actual = siguiente
+        elif actual.valor > 0:
+            # Agregar nodo a PTR1
+            nodo = Nodo(actual.valor)
+            nodo.siguiente = ptr1
+            ptr1 = nodo
+            actual = actual.siguiente
+        else:
+            # Agregar nodo a PTR2
+            nodo = Nodo(actual.valor)
+            nodo.siguiente = ptr2
+            ptr2 = nodo
+            actual = actual.siguiente
+
+    return ptr1, ptr2
+
+
+class Nodo:
+    def __init__(self, valor, siguiente=None):
+        self.valor = valor
+        self.siguiente = siguiente
+
+# Creamos una lista enlazada de ejemplo
+nodo5 = Nodo(5)
+nodo4 = Nodo(-2, nodo5)
+nodo3 = Nodo(3, nodo4)
+nodo2 = Nodo(-1, nodo3)
+nodo1 = Nodo(2, nodo2)
+nodo0 = Nodo(0, nodo1)
+ptr = nodo0
+
+# Formamos las listas PTR1 y PTR2
+ptr1, ptr2 = formar_listas(ptr)
+
+# Imprimimos los valores de las listas PTR1 y PTR2
+print("PTR1:")
+actual = ptr1
+while actual:
+    print(actual.valor)
+    actual = actual.siguiente
+
+print("PTR2:")
+actual = ptr2
+while actual:
+    print(actual.valor)
+    actual = actual.siguiente
+    
+    
+    
+    
+    
+ Dadas dos listas enlazadas simples ya creadas (PTR1 y PTR2) ordenadas ascendentemente, hacer un algoritmo que cree una tercera lista PTR3 ordenada descendentemente con los elementos comunes de las dos listas.
+ 
+ 
+ 
+  class Nodo:
+    def __init__(self, dato=None, prox=None):
+        self.dato = dato
+        self.prox = prox
+        
+def agregar_al_final(ptr, dato):
+    if ptr is None:
+        return Nodo(dato)
+    else:
+        ptr.prox = agregar_al_final(ptr.prox, dato)
+        return ptr
+
+def invertir_lista(ptr):
+    anterior = None
+    actual = ptr
+    siguiente = None
+    while actual is not None:
+        siguiente = actual.prox
+        actual.prox = anterior
+        anterior = actual
+        actual = siguiente
+    return anterior
+
+def crear_lista_descendente(ptr):
+    descendente = None
+    while ptr is not None:
+        descendente = Nodo(ptr.dato, descendente)
+        ptr = ptr.prox
+    return descendente
+
+def lista_comun_descendente(ptr1, ptr2):
+    ptr3 = None
+    while ptr1 is not None and ptr2 is not None:
+        if ptr1.dato == ptr2.dato:
+            ptr3 = Nodo(ptr1.dato, ptr3)
+            ptr1 = ptr1.prox
+            ptr2 = ptr2.prox
+        elif ptr1.dato > ptr2.dato:
+            ptr1 = ptr1.prox
+        else:
+            ptr2 = ptr2.prox
+    return invertir_lista(crear_lista_descendente(ptr3))
+
+
+  # Creamos dos listas
+ptr1 = Nodo(2, Nodo(4, Nodo(6, Nodo(8))))
+ptr2 = Nodo(1, Nodo(2, Nodo(3, Nodo(4, Nodo(5, Nodo(6))))))
+
+# Llamamos a la función para obtener la lista de elementos comunes en orden descendente
+ptr3 = lista_comun_descendente(ptr1, ptr2)
+
+# Imprimimos los elementos de la lista resultante
+while ptr3 is not None:
+    print(ptr3.dato)
+    ptr3 = ptr3.prox
+    
+    
+    
+    
+    
+Eliminar el K-ésimo nodo de una lista simple enlazada.
+
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def delete_kth_node(head, k):
+    if head is None:
+        return None
+    
+    if k == 1:
+        head = head.next
+        return head
+    
+    current = head
+    count = 1
+    
+    while current is not None and count < k-1:
+        current = current.next
+        count += 1
+    
+    if current is None or current.next is None:
+        return head
+    
+    current.next = current.next.next
+    
+    return head
+
+
+
