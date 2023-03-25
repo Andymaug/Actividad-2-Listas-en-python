@@ -1,20 +1,38 @@
 1. Dadas dos listas simples enlazadas ya creadas cuyos inicios son PTR1 y PTR2, hacer un algoritmo que elimine de la lista PTR1 los elementos en común entre las dos listas. Nota: No se puede asumir que las listas están ordenadas.
 
-def eliminar_elementos_comunes(PTR1, PTR2):
-    nodo1 = PTR1
-    while nodo1 is not None:
-        nodo2 = PTR2
-        while nodo2 is not None:
-            if nodo1.informacion == nodo2.informacion:
-                if nodo1 == PTR1:
-                    PTR1 = nodo1.siguiente
-                else:
-                    nodo1.anterior.siguiente = nodo1.siguiente
-                if nodo1.siguiente is not None:
-                    nodo1.siguiente.anterior = nodo1.anterior
-            nodo2 = nodo2.siguiente
-        nodo1 = nodo1.siguiente
-    return PTR1
+class Nodo:
+    def __init__(self, valor, siguiente=None):
+        self.valor = valor
+        self.siguiente = siguiente
+
+def eliminar_elementos_en_comun(ptr1, ptr2):
+    valores_ptr2 = set()
+    actual_ptr2 = ptr2
+
+    # Agregamos los valores de PTR2 al conjunto valores_ptr2
+    while actual_ptr2:
+        valores_ptr2.add(actual_ptr2.valor)
+        actual_ptr2 = actual_ptr2.siguiente
+
+    # Recorremos PTR1 y eliminamos los nodos cuyo valor está en valores_ptr2
+    previo_ptr1 = None
+    actual_ptr1 = ptr1
+
+    while actual_ptr1:
+        if actual_ptr1.valor in valores_ptr2:
+            # Eliminamos el nodo actual_ptr1
+            if previo_ptr1:
+                previo_ptr1.siguiente = actual_ptr1.siguiente
+            else:
+                ptr1 = actual_ptr1.siguiente
+            del actual_ptr1
+            actual_ptr1 = previo_ptr1.siguiente if previo_ptr1 else ptr1
+        else:
+            previo_ptr1 = actual_ptr1
+            actual_ptr1 = actual_ptr1.siguiente
+
+    return ptr1
+
 
 
 
@@ -25,7 +43,24 @@ class Nodo:
         self.valor = valor
         self.siguiente = siguiente
 
-# Creamos una lista enlazada de ejemplo
+def contar_elementos_diferentes(lista):
+    valores = set()
+    actual = lista
+
+    while actual:
+        valores.add(actual.valor)
+        actual = actual.siguiente
+
+    cantidad = len(valores)
+    elementos_diferentes = sorted(list(valores))
+
+    print(f"La lista tiene {cantidad} elementos diferentes:")
+    for elemento in elementos_diferentes:
+        print(elemento)
+
+    return cantidad
+
+ # Creamos una lista enlazada de ejemplo
 nodo4 = Nodo(2)
 nodo3 = Nodo(3, nodo4)
 nodo2 = Nodo(1, nodo3)
